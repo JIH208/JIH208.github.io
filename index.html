@@ -3,224 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inhwan Jeong - Portfolio</title>
+    <title>Inhwan Jeong | ANR Lab</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* [Vibe Coding Theme] */
+        /* [Design Concept]
+           Style: Modern Top-Navigation Portfolio
+           Theme: Clean White & Academic Blue
+        */
         :root {
-            --primary-color: #0a192f;
-            --accent-color: #64ffda;
-            --text-main: #333;
-            --bg-light: #f4f7f6;
+            --primary-color: #0e4a8e; /* Hanyang Blue */
+            --text-main: #222;
+            --text-sub: #666;
+            --bg-color: #ffffff;
+            --bg-section: #f8f9fa;
+            --max-width: 900px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-light);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             color: var(--text-main);
-            display: flex;
-            min-height: 100vh;
+            line-height: 1.6;
+            background-color: var(--bg-color);
         }
 
-        /* 사이드바 */
-        .sidebar {
-            width: 320px;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 50px 30px;
-            text-align: center;
-            position: fixed;
-            height: 100%;
-            overflow-y: auto;
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 1. Top Navigation Bar (상단 메뉴) --- */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eee;
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
+            height: 60px;
         }
 
-        /* 이미지 스타일 수정: 이미지가 깨졌을 때 안내 문구 표시 */
-        .profile-container {
-            width: 160px;
-            height: 160px;
-            margin-bottom: 25px;
-            position: relative;
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-sub);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- 2. Hero Section (프로필 영역) --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background-color: var(--bg-section);
+            margin-bottom: 60px;
+        }
+
+        .hero-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
         }
 
         .profile-img {
-            width: 100%;
-            height: 100%;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--accent-color);
-            background-color: #ddd;
-            display: block;
-        }
-        
-        /* 이미지가 없을 때 대체 텍스트 스타일 */
-        .profile-img:after {
-            content: 'No Image';
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            background-color: #333;
-            color: #fff;
-            border-radius: 50%;
-            font-size: 0.8rem;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
         }
 
-        .name { font-size: 2rem; font-weight: 700; margin-bottom: 10px; }
-        .job-title { color: var(--accent-color); font-size: 1rem; margin-bottom: 40px; }
-        
-        .contact-info { width: 100%; text-align: left; margin-bottom: 50px; font-size: 0.95rem; }
-        .contact-item { margin-bottom: 18px; display: flex; align-items: center; color: #a8b2d1; }
-        .contact-item i { width: 25px; color: var(--accent-color); margin-right: 12px; text-align: center; }
-        .contact-item a { color: #a8b2d1; text-decoration: none; }
-
-        .download-btn {
-            display: inline-block;
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--text-main);
         }
-        .download-btn:hover { background-color: rgba(100, 255, 218, 0.1); }
 
-        /* 메인 콘텐츠 */
-        .main-content { margin-left: 320px; flex: 1; padding: 60px 80px; background-color: white; }
-        section { margin-bottom: 60px; }
-        
-        .section-title {
-            font-size: 1.6rem;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-bottom: 3px solid var(--accent-color);
-            display: inline-block;
-            padding-bottom: 10px;
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-sub);
             margin-bottom: 30px;
         }
 
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .btn-primary:hover { background-color: #0b3d75; border-color: #0b3d75; }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+        .btn-outline:hover { background-color: rgba(14, 74, 142, 0.1); }
+
+        /* --- 3. Main Content (내용 영역) --- */
+        .content-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        section { margin-bottom: 70px; }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            color: var(--text-main);
+        }
+
+        /* Biography Text */
+        .bio-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        /* Resume List Items */
         .resume-item {
-            margin-bottom: 35px;
-            padding-left: 25px;
-            border-left: 2px solid #e0e0e0;
-            position: relative;
-        }
-        .resume-item::before {
-            content: ''; position: absolute; left: -8px; top: 6px;
-            width: 14px; height: 14px; background-color: var(--primary-color);
-            border-radius: 50%; border: 2px solid white;
+            display: flex;
+            margin-bottom: 30px;
         }
 
-        .item-header { display: flex; justify-content: space-between; margin-bottom: 5px; }
-        .item-title { font-size: 1.3rem; font-weight: 700; }
-        .item-date { background: #e6f1ff; color: var(--primary-color); padding: 4px 12px; border-radius: 15px; font-size: 0.9rem; font-weight: 600; }
-        .item-subtitle { font-style: italic; color: #555; margin-bottom: 10px; }
-        .item-desc ul { padding-left: 20px; line-height: 1.6; }
+        .resume-left {
+            width: 140px;
+            flex-shrink: 0;
+            font-weight: 600;
+            color: var(--text-sub);
+            padding-top: 2px;
+        }
 
-        @media (max-width: 900px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; position: relative; height: auto; }
-            .main-content { margin-left: 0; padding: 40px 20px; }
+        .resume-right {
+            flex: 1;
+        }
+
+        .item-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 5px;
+        }
+
+        .item-sub {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .item-desc ul { list-style: disc; margin-left: 20px; }
+
+        /* Social Icons (Footer) */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: #888;
+        }
+        .social-links a:hover { color: var(--primary-color); }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .resume-item { flex-direction: column; }
+            .resume-left { margin-bottom: 5px; color: var(--primary-color); }
         }
     </style>
 </head>
 <body>
 
-    <aside class="sidebar">
-        <div class="profile-container">
-            <img src="profile.jpg" alt="사진 없음: 파일명을 확인하세요" class="profile-img" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333'; this.parentNode.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:white;font-size:0.8rem;\'>파일 없음<br>profile.jpg</div>'">
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Inhwan Jeong</a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#research">Research</a>
+            </nav>
         </div>
-        
-        <h1 class="name">Inhwan Jeong</h1>
-        <p class="job-title">Semiconductor Process Engineer<br>(Nano-Optoelectronics)</p>
+    </header>
 
-        <div class="contact-info">
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:ih0208@hanyang.ac.kr">ih0208@hanyang.ac.kr</a>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <span>010-8412-9049</span>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Ansan-si, Gyeonggi-do</span>
+    <div class="hero" id="about">
+        <div class="hero-container">
+            <img src="profile.jpg" alt="Inhwan Jeong" class="profile-img" onerror="this.src='https://via.placeholder.com/160'">
+            
+            <h1>Inhwan Jeong</h1>
+            <p>M.S. Student at ANR Laboratory, Hanyang University<br>Semiconductor Process & Micro-LED Researcher</p>
+            
+            <div class="btn-group">
+                <a href="http://anrlab.hanyang.ac.kr/" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-flask"></i> Lab Website
+                </a>
+                <a href="cv.pdf" target="_blank" class="btn btn-outline">
+                    <i class="fas fa-file-pdf"></i> Download CV
+                </a>
             </div>
         </div>
+    </div>
 
-        <a href="cv.pdf" class="download-btn" download target="_blank">
-            <i class="fas fa-download"></i> Download Full CV
-        </a>
-    </aside>
+    <div class="content-container">
 
-    <main class="main-content">
         <section>
-            <h2 class="section-title">Objective</h2>
-            <p style="line-height: 1.7;">
-                Highly motivated engineering undergraduate with a strong academic background in <strong>Nano-Optoelectronics (GPA 4.16/4.50)</strong>.
-                Seeking a position as a <strong>Semiconductor Process Engineer</strong> to utilize hands-on research experience in Micro-LED fabrication and yield optimization strategies.
+            <h2 class="section-title">Biography</h2>
+            <p class="bio-text">
+                Highly motivated engineering undergraduate with a strong academic background in <strong>Nano-Optoelectronics (GPA 4.16/4.50)</strong>. 
+                Currently pursuing a <strong>Master's degree</strong> at ANR Lab, focusing on hands-on research in <strong>Micro-LED fabrication</strong> and yield optimization strategies. 
+                Passionate about next-generation semiconductor processes.
             </p>
         </section>
 
-        <section>
+        <section id="education">
             <h2 class="section-title">Education</h2>
+
             <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title">Hanyang University</span>
-                    <span class="item-date">Exp. Mar 2027</span>
+                <div class="resume-left">2027 (Exp)</div>
+                <div class="resume-right">
+                    <div class="item-title">Hanyang University</div>
+                    <div class="item-sub">M.S. in Nano-Optoelectronics</div>
+                    <div class="item-desc">Advanced Nanoelectronics Research Laboratory (ANR Lab)</div>
                 </div>
-                <div class="item-subtitle">Bachelor of Science in Nano-Optoelectronics</div>
-                <div class="item-desc">
-                    <ul>
-                        <li><strong>GPA:</strong> 4.16 / 4.50</li>
-                        <li>Location: Ansan, South Korea</li>
-                    </ul>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-left">~ 2027</div>
+                <div class="resume-right">
+                    <div class="item-title">Hanyang University</div>
+                    <div class="item-sub">B.S. in Nano-Optoelectronics</div>
+                    <div class="item-desc">GPA: 4.16 / 4.50</div>
                 </div>
             </div>
         </section>
 
-        <section>
+        <section id="research">
             <h2 class="section-title">Research Experience</h2>
+            
             <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title">Undergraduate Researcher</span>
-                    <span class="item-date">Mar 2024 - Jul 2024</span>
-                </div>
-                <div class="item-subtitle">Advanced Nanoelectronics Research Laboratory</div>
-                <div class="item-desc">
-                    <ul>
-                        <li><strong>Micro-LED Fabrication & Analysis:</strong> Conducted fabrication processes and analyzed electrical characteristics.</li>
-                        <li><strong>Yield Optimization:</strong> Identified key process variables to improve device yield.</li>
-                    </ul>
+                <div class="resume-left">Mar 2024 - <br>Jul 2024</div>
+                <div class="resume-right">
+                    <div class="item-title">Undergraduate Researcher</div>
+                    <div class="item-sub">ANR Lab, Hanyang University</div>
+                    <div class="item-desc">
+                        <ul>
+                            <li><strong>Micro-LED Fabrication:</strong> Conducted fabrication processes and analyzed electrical characteristics.</li>
+                            <li><strong>Yield Optimization:</strong> Identified key process variables to improve device yield.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2 class="section-title">Awards</h2>
+            <h2 class="section-title">Awards & Honors</h2>
             <div class="resume-item">
-                <div class="item-header">
-                    <span class="item-title">Excellence Award</span>
-                    <span class="item-date">Nov 2022</span>
-                </div>
-                <div class="item-subtitle">Campus Patent Universiade</div>
-                <div class="item-desc">
-                    <ul>
-                        <li>Topic: Neuromorphic Technology Applications for Memory Products</li>
-                        <li>Sponsor: SK Hynix</li>
-                    </ul>
+                <div class="resume-left">Nov 2022</div>
+                <div class="resume-right">
+                    <div class="item-title">Excellence Award</div>
+                    <div class="item-sub">Campus Patent Universiade</div>
+                    <div class="item-desc">
+                        Topic: Neuromorphic Technology Applications for Memory Products (Sponsor: SK Hynix)
+                    </div>
                 </div>
             </div>
         </section>
-    </main>
+
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="mailto:ih0208@hanyang.ac.kr"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p style="margin-top: 15px;">&copy; 2024 Inhwan Jeong. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
